@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=kenzie
+      - POSTGRES_PASSWORD=kenzie
+      - POSTGRES_DB=tests_products
+    ports:
+      - 5432:5432
+    volumes:
+      - ./create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
