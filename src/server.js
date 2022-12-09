@@ -1,8 +1,10 @@
+import "dotenv/config";
 import app from "./app";
-import "dotenv/config"
 import { startDatabase } from "./database";
 
-export default app.listen(3000, () => {
-    startDatabase();
-    console.log("Server running");
+const PORT = process.env.SERVER_PORT;
+
+export default app.listen(PORT, async () => {
+  await startDatabase();
+  console.log(`Server running at http://localhost:${PORT}`);
 });
